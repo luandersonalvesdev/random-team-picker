@@ -1,0 +1,3 @@
+FROM node:16.19.1-alpine3.17
+
+EXPOSE 3000

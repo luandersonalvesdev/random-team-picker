@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  api:
+    build: ./api
+    container_name: api-team-drawer
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./api:/app
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    networks:
+      - team-drawer-network
+
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: db-team-drawer
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root-pass
+      MYSQL_DATABASE: team-drawer-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    networks:
+      - team-drawer-network
+
+networks:
+  team-drawer-network:
+    driver: bridge
