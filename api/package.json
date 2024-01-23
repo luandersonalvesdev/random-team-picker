@@ -1,0 +1,15 @@
+{
+  "name": "team-drawer-api",
+  "version": "1.0.0",
+  "description": "Api for team drawer",
+  "main": "./app/server/index.js",
+  "scripts": {
+    "start": "node ./app/server/index.js",
+    "test": ""
+  },
+  "author": "Luanderson Alves",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

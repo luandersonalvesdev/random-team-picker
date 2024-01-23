@@ -9,7 +9,7 @@ services:
     stdin_open: true
     restart: always
     volumes:
-      - ./api:/app
+      - ./api:/api
     depends_on:
       - db
     ports:
