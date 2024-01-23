@@ -4,8 +4,8 @@ const routes = express();
 
 routes.use(express.json());
 
-routes.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+routes.get('/', (_req, res) => {
+  res.send('Hello World!');
+});
 
 module.exports = routes;
