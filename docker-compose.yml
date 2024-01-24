@@ -24,10 +24,8 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: root-pass
+      MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: team-drawer-db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
     networks:
       - team-drawer-network
 
