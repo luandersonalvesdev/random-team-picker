@@ -2,10 +2,10 @@
   "name": "team-drawer-api",
   "version": "1.0.0",
   "description": "Api for team drawer",
-  "main": "./app/server/index.js",
+  "main": "./app/server.js",
   "scripts": {
-    "start": "node ./app/server/index.js",
-    "dev": "nodemon ./app/server/index.js",
+    "start": "node ./app/server.js",
+    "dev": "nodemon ./app/server.js",
     "eslint": "eslint ."
   },
   "author": "Luanderson Alves",
