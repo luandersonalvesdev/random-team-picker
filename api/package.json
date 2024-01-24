@@ -4,9 +4,14 @@
   "description": "Api for team drawer",
   "main": "./app/server.js",
   "scripts": {
+    "prestart": "prisma migrate deploy",
     "start": "node ./app/server.js",
+    "predev": "prisma migrate deploy && prisma db seed",
     "dev": "nodemon ./app/server.js",
     "eslint": "eslint ."
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "author": "Luanderson Alves",
   "license": "ISC",
