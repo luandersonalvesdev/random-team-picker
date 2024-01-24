@@ -9,3 +9,18 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id Int @id @default(autoincrement())
+  username String @unique @db.VarChar(50)
+  password String @db.VarChar(20)
+  email String @unique @db.VarChar(50)
+  players Player[]
+}
+
+model Player {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(50)
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+}
