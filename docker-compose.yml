@@ -4,7 +4,7 @@ services:
 
   api:
     build: ./api
-    container_name: api-team-drawer
+    container_name: api-random-team-picker
     tty: true
     stdin_open: true
     restart: always
@@ -15,20 +15,20 @@ services:
     ports:
       - 3000:3000
     networks:
-      - team-drawer-network
+      - random-team-picker-network
 
   db:
     image: mysql:8.0
     restart: always
-    container_name: db-team-drawer
+    container_name: db-random-team-picker
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: team-drawer-db
+      MYSQL_DATABASE: random-team-picker-db
     networks:
-      - team-drawer-network
+      - random-team-picker-network
 
 networks:
-  team-drawer-network:
+  random-team-picker-network:
     driver: bridge
