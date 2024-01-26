@@ -3,7 +3,7 @@ const signupSchema = require('../validations/signupSchema.joi');
 const { generateToken } = require('../auth/authToken');
 const { generateHashPass } = require('../validations/passwordValidator.bcrypt');
 const {
-  httpResponseMapper, SUCCESS, BAD_REQUEST, CONFLICT,
+  httpResponseMapper, CREATED, BAD_REQUEST, CONFLICT,
 } = require('../utils/httpResponseMapper');
 
 const prisma = new PrismaClient();
@@ -53,7 +53,7 @@ const doSignup = async (email, username, password) => {
   const token = generateToken({ user: userPayload });
 
   return {
-    status: httpResponseMapper(SUCCESS),
+    status: httpResponseMapper(CREATED),
     data: { ...userPayload, token },
   };
 };

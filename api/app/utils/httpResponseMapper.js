@@ -1,17 +1,17 @@
 const SUCCESS = 'SUCCESS';
+const CREATED = 'CREATED';
 const BAD_REQUEST = 'BAD_REQUEST';
 const CONFLICT = 'CONFLICT';
 const UNAUTHORIZED = 'UNAUTHORIZED';
 
 const httpResponseMapper = (status) => {
-  const mapper = {
-    SUCCESS: 201,
-    BAD_REQUEST: 400,
-    CONFLICT: 409,
-    UNAUTHORIZED: 401,
-  };
-
-  return mapper[status];
+  switch (status) {
+    case SUCCESS: return 200;
+    case CREATED: return 201;
+    case BAD_REQUEST: return 400;
+    case CONFLICT: return 409;
+    default: return 500;
+  }
 };
 
 module.exports = {
@@ -20,4 +20,5 @@ module.exports = {
   BAD_REQUEST,
   CONFLICT,
   UNAUTHORIZED,
+  CREATED,
 };
