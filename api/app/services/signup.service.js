@@ -11,7 +11,7 @@ const doSignup = async (email, username, password) => {
   const { error } = signupSchema.validate({ email, username, password });
   if (error) {
     return {
-      status: httpResponseMapper[BAD_REQUEST],
+      status: httpResponseMapper(BAD_REQUEST),
       data: {
         error: 'Validation error',
         message: error.message,
@@ -30,7 +30,7 @@ const doSignup = async (email, username, password) => {
 
   if (userExists) {
     return {
-      status: httpResponseMapper[CONFLICT],
+      status: httpResponseMapper(CONFLICT),
       data: {
         error: 'Conflict',
         message: 'Username or email already registered',
@@ -50,8 +50,8 @@ const doSignup = async (email, username, password) => {
   const token = generateToken({ user: userPayload });
 
   return {
-    status: httpResponseMapper[SUCCESS],
-    data: { ...user, token },
+    status: httpResponseMapper(SUCCESS),
+    data: { ...userPayload, token },
   };
 };
 

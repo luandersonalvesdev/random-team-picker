@@ -7,12 +7,7 @@ const generateToken = (payload) => jwt.sign(payload, secret, configJWT);
 
 const getPayload = (authorization) => {
   const [, token] = authorization.split(' ');
-
-  try {
-    return jwt.verify(token, secret);
-  } catch (error) {
-    return null;
-  }
+  return jwt.verify(token, secret);
 };
 
 module.exports = {
