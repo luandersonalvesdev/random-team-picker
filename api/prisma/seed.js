@@ -3,6 +3,8 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
+const hashedPass = '$2y$11$61LX0oQOXB8J5umGaDqifu68EbUHDdZBLjNh8VSdIvF.tzoaeA8aa';
+
 async function main() {
   const jorel = await prisma.user.upsert({
     where: { email: 'jorel@email.com' },
@@ -10,7 +12,7 @@ async function main() {
     create: {
       email: 'jorel@email.com',
       username: 'Jorel',
-      password: '123456',
+      password: hashedPass,
       players: {
         create: [
           {
@@ -29,7 +31,7 @@ async function main() {
     create: {
       email: 'lara@email.com',
       username: 'Lara',
-      password: '123456',
+      password: hashedPass,
       players: {
         create: {
           name: 'Player3',
