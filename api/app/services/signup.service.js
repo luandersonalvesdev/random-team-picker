@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const signupSchema = require('../validations/signupSchema.joi');
 const { generateToken } = require('../auth/authToken');
+const { generateHashPass } = require('../validations/passwordValidator.bcrypt');
 const {
   httpResponseMapper, SUCCESS, BAD_REQUEST, CONFLICT,
 } = require('../utils/httpResponseMapper');
@@ -38,8 +39,10 @@ const doSignup = async (email, username, password) => {
     };
   }
 
+  const hashedPass = await generateHashPass(password);
+
   const user = await prisma.user.create({
-    data: { email, username, password },
+    data: { email, username, password: hashedPass },
   });
 
   const userPayload = {
