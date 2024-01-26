@@ -42,10 +42,12 @@ const doSignup = async (email, username, password) => {
     data: { email, username, password },
   });
 
-  delete user.email;
-  delete user.password;
+  const userPayload = {
+    id: user.id,
+    username,
+  };
 
-  const token = generateToken({ user });
+  const token = generateToken({ user: userPayload });
 
   return {
     status: httpResponseMapper[SUCCESS],
