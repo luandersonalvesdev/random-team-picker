@@ -16,5 +16,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'no-trailing-spaces': ['error', { skipBlankLines: true }],
+    'eol-last': ['error', 'always'],
+    'no-console': 1
   },
 }
