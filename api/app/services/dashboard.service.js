@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const playersSchema = require('../validations/playersSchema.joi');
 const {
-  httpResponseMapper, BAD_REQUEST, CREATED,
+  httpResponseMapper, BAD_REQUEST, CREATED, SUCCESS,
 } = require('../utils/httpResponseMapper');
 
 const prisma = new PrismaClient();
@@ -29,6 +29,17 @@ const createPlayers = async (players, user) => {
   };
 };
 
+const getAllPlayers = async (user) => {
+  const userId = user.id;
+  const players = await prisma.player.findMany({ where: { userId } });
+
+  return {
+    status: httpResponseMapper(SUCCESS),
+    data: players,
+  };
+};
+
 module.exports = {
   createPlayers,
+  getAllPlayers,
 };
