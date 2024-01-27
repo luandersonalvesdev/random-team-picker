@@ -20,8 +20,15 @@ const updatePlayer = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const deletePlayer = async (req, res) => {
+  const { id } = req.params;
+  const { status, data } = await dashboardService.deletePlayer(Number(id));
+  return res.status(status).json(data);
+};
+
 module.exports = {
   createPlayers,
   getAllPlayers,
   updatePlayer,
+  deletePlayer,
 };

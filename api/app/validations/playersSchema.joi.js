@@ -1,7 +1,8 @@
 const Joi = require('joi');
 
 const playersSchema = Joi.object({
-  players: Joi.array().items(Joi.string().min(1).max(50).required()).required(),
+  players: Joi.array().items(Joi.string().trim().min(1).max(50)
+    .required()).required(),
 });
 
 const playerSchema = Joi.object({

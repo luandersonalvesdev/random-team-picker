@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const { playersSchema, playerSchema } = require('../validations/playersSchema.joi');
 const {
-  httpResponseMapper, BAD_REQUEST, CREATED, SUCCESS, NOT_FOUND,
+  httpResponseMapper, BAD_REQUEST, CREATED, SUCCESS, NOT_FOUND, NO_CONTENT,
 } = require('../utils/httpResponseMapper');
 
 const prisma = new PrismaClient();
@@ -17,11 +17,10 @@ const createPlayers = async (players, user) => {
 
   const userId = user.id;
 
-  await prisma.$transaction(players.map((playerName) => {
-    const formattedName = playerName.trim();
-    return prisma.player.create({ data: { name: formattedName, userId } });
-  }));
-  await prisma.$disconnect();
+  players.forEach(async (player) => {
+    const formattedName = player.trim();
+    await prisma.player.create({ data: { name: formattedName, userId } });
+  });
 
   return {
     status: httpResponseMapper(CREATED),
@@ -65,8 +64,28 @@ const updatePlayer = async (playerId, newName) => {
   };
 };
 
+const deletePlayer = async (playerId) => {
+  try {
+    await prisma.player.delete({
+      where: { id: playerId },
+    });
+
+    return {
+      status: httpResponseMapper(NO_CONTENT),
+      data: '',
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: httpResponseMapper(NOT_FOUND),
+      data: { error: 'Not found', message: 'Player not found' },
+    };
+  }
+};
+
 module.exports = {
   createPlayers,
   getAllPlayers,
   updatePlayer,
+  deletePlayer,
 };
