@@ -29,6 +29,19 @@ services:
     networks:
       - random-team-picker-network
 
+  frontend:
+    build: ./frontend
+    container_name: frontend-random-team-picker
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 3001:3001
+    networks:
+      - random-team-picker-network
+
 networks:
   random-team-picker-network:
     driver: bridge
