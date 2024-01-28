@@ -5,7 +5,7 @@ import { PlayersContext } from '../contexts/PlayersContext';
 export default function PlayerAdder() {
   const [playersToAdd, setPlayersToAdd] = useState('');
   const textAreaRef = useRef(null);
-  const { setPlayersList } = useContext(PlayersContext);
+  const { setPlayersList, isLogged } = useContext(PlayersContext);
 
   const resizeTextArea = () => {
     textAreaRef.current.style.height = 'auto';
@@ -25,17 +25,17 @@ export default function PlayerAdder() {
     let newPlayers = [];
     const players = formattedPlayersToAdd();
 
-    try {
+    if(isLogged) {
       const response = await instanceAxios.post('/dashboard/player', { players });
       newPlayers = await response.data;
-    } catch (error) {
+    } else {
       newPlayers = players.map((name, ind) => {
         return {name, id: ind}
       });
-    } finally {
-      setPlayersList((prev) => [...prev, ...newPlayers]);
-      setPlayersToAdd('');
     }
+
+    setPlayersList((prev) => [...prev, ...newPlayers]);
+    setPlayersToAdd('');
   }
 
   const formattedPlayersToAdd = () => {
