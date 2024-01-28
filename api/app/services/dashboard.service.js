@@ -17,14 +17,18 @@ const createPlayers = async (players, user) => {
 
   const userId = user.id;
 
-  players.forEach(async (player) => {
-    const formattedName = player.trim();
-    await prisma.player.create({ data: { name: formattedName, userId } });
-  });
+  const newPlayers = await Promise.all(
+    players.map(async (player) => {
+      const formattedName = player.trim();
+      return prisma.player.create({ data: { name: formattedName, userId } });
+    }),
+  );
+
+  Promise.all(newPlayers);
 
   return {
     status: httpResponseMapper(CREATED),
-    data: { message: 'Players created' },
+    data: newPlayers,
   };
 };
 
