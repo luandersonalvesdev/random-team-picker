@@ -4,6 +4,7 @@ import Login from './pages/Login/index.jsx'
 import Signup from './pages/Signup/index.jsx'
 import Dashboard from './pages/Dashboard/index.jsx'
 import NotFound from './pages/NotFound/index.jsx'
+import PlayersContextProvider from './contexts/PlayersContext.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,5 +30,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <PlayersContextProvider>
     <RouterProvider router={router} />
+  </PlayersContextProvider>
 )
