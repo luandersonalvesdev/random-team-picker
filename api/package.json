@@ -4,9 +4,9 @@
   "description": "Api for team drawer",
   "main": "./app/server.js",
   "scripts": {
-    "prestart": "prisma migrate deploy",
+    "prestart": "prisma generate && prisma migrate deploy",
     "start": "node ./app/server.js",
-    "predev": "prisma migrate deploy && prisma db seed",
+    "predev": "prisma generate && prisma migrate deploy && prisma db seed",
     "dev": "nodemon ./app/server.js",
     "eslint": "eslint ."
   },
