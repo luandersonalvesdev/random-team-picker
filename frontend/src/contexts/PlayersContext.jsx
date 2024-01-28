@@ -5,9 +5,10 @@ export const PlayersContext = createContext();
 
 export default function PlayersContextProvider({children}) {
   const [playersList, setPlayersList] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
 
   const value = {
-    playersList, setPlayersList
+    playersList, setPlayersList, isLogged, setIsLogged
   }
 
   return(

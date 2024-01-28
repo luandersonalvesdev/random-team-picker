@@ -1,18 +1,19 @@
-import useGetPlayers from '../hooks/useGetPlayers'
 import PropTypes from 'prop-types'
 import PlayerItem from './PlayerItem'
 import { useContext } from 'react'
 import { PlayersContext } from '../contexts/PlayersContext'
 import { Link } from 'react-router-dom'
+import useGetPlayers from '../hooks/useGetPlayers'
 
 export default function PlayersList() {
-  const { isAuth } = useGetPlayers()
-  const { playersList } = useContext(PlayersContext)
+  const { playersList, isLogged } = useContext(PlayersContext)
+
+  useGetPlayers();
 
   return (
     <div>
       {
-        !isAuth
+        !isLogged
           &&
             <p>
               Voce está usando como convidado logo seus jogadores não serão salvos.
