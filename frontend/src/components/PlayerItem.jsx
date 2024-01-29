@@ -30,6 +30,16 @@ export default function PlayerItem({player: {name, id}}) {
     setIsEditing(false)
   }
 
+  const handleRemoveName = () => {
+
+    if(isLogged) {
+      instanceAxios.delete(`/dashboard/player/${id}`);
+    }
+
+    const newPlayers = playersList.filter((player) => player.id !== id);
+    setPlayersList(newPlayers)
+  }
+
   return (
     <>
       {
@@ -44,7 +54,7 @@ export default function PlayerItem({player: {name, id}}) {
             <li>
               <p>{name}</p>
               <button onClick={() => setIsEditing(true)}>Editar</button>
-              <button>Remover</button>
+              <button onClick={handleRemoveName}>Remover</button>
             </li>
           )
       }
