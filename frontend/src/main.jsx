@@ -5,6 +5,7 @@ import Signup from './pages/Signup/index.jsx'
 import Dashboard from './pages/Dashboard/index.jsx'
 import NotFound from './pages/NotFound/index.jsx'
 import PlayersContextProvider from './contexts/PlayersContext.jsx'
+import RedirectDashboardRoute from './pages/RedirectRoutes/RedirectDashboardRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login />
+    element: (
+      <RedirectDashboardRoute>
+        <Login />
+      </RedirectDashboardRoute>
+    )
   },
   {
     path: '/signup',

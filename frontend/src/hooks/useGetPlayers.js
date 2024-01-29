@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { getFromLs } from '../utils/localStorage';
+import { getFromLs, removeToLs } from '../utils/localStorage';
 import instanceAxios from '../utils/axios';
 import { PlayersContext } from '../contexts/PlayersContext';
 
@@ -17,11 +17,12 @@ const useGetPlayers = () => {
     instanceAxios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`
     instanceAxios.get('/dashboard/player')
       .then((response) => {
-        setPlayersList(response.data)
-        setIsLogged(true)
+        setPlayersList(response.data);
+        setIsLogged(true);
       }).catch((error) => {
-        setPlayersList([])
-        setIsLogged(false)
+        setPlayersList([]);
+        setIsLogged(false);
+        removeToLs('rtp-token');
         console.log(error);
       })
   }, []);

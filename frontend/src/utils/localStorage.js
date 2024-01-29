@@ -6,4 +6,8 @@ const setToLs = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
-export { getFromLs, setToLs }
+const removeToLs = (key) => {
+  localStorage.removeItem(key)
+}
+
+export { getFromLs, setToLs, removeToLs }
