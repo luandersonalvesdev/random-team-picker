@@ -1,10 +1,54 @@
 import PropType from 'prop-types'
+import { useContext, useState } from 'react';
+import { PlayersContext } from '../contexts/PlayersContext'
+import instanceAxios from '../utils/axios';
 
-export default function PlayerItem({player}) {
+export default function PlayerItem({player: {name, id}}) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedName, setEditedName] = useState(name);
+  const { playersList, setPlayersList, isLogged } = useContext(PlayersContext);
+
+  const handleEditName = (event) => {
+    const { value } = event.target;
+    setEditedName(value)
+  }
+
+  const handleUpdateName = async () => {
+
+    if(isLogged) {
+      instanceAxios.patch(`/dashboard/player/${id}`, { name: editedName });
+    }
+
+    const newPlayers = playersList.map((player) => {
+      if(id === player.id) {
+        return { ...player, name: editedName }
+      }
+      return player
+    })
+
+    setPlayersList(newPlayers);
+    setIsEditing(false)
+  }
+
   return (
-    <li>
-      {player.name}
-    </li>
+    <>
+      {
+        isEditing
+          ? (
+            <li>
+              <input type="text" value={editedName} onChange={handleEditName} maxLength={25}/>
+              <button disabled={!editedName.trim()} onClick={handleUpdateName}>Salvar</button>
+            </li>
+          )
+          : (
+            <li>
+              <p>{name}</p>
+              <button onClick={() => setIsEditing(true)}>Editar</button>
+              <button>Remover</button>
+            </li>
+          )
+      }
+    </>
   )
 }
 

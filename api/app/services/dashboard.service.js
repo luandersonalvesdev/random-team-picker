@@ -60,11 +60,13 @@ const updatePlayer = async (playerId, newName) => {
     };
   }
 
-  await prisma.player.update({ where: { id: playerId }, data: { name: newName } });
+  const playerUpdated = await prisma.player.update(
+    { where: { id: playerId }, data: { name: newName } },
+  );
 
   return {
     status: httpResponseMapper(SUCCESS),
-    data: { message: 'Player updated' },
+    data: playerUpdated,
   };
 };
 
