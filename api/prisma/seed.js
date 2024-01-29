@@ -3,7 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-const hashedPass = '$2y$11$61LX0oQOXB8J5umGaDqifu68EbUHDdZBLjNh8VSdIvF.tzoaeA8aa';
+const hashedPass = '$2y$11$61LX0oQOXB8J5umGaDqifu68EbUHDdZBLjNh8VSdIvF.tzoaeA8aa'; // 123456
 
 async function main() {
   const jorel = await prisma.user.upsert({
