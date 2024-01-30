@@ -27,12 +27,16 @@ export default function PlayerAdder() {
     const players = formattedPlayersToAdd();
 
     if(isLogged) {
-      instanceAxios.post('/dashboard/player', { players });
+      const playersAdded = await instanceAxios.post('/dashboard/player', { players });
+      newPlayers = [
+        ...playersAdded.data
+      ]
+    } else {
+      newPlayers = [
+        ...players.map((name, index) => ({ id: playersList.length + index + 1, name })),
+      ];
     }
 
-    newPlayers = [
-      ...players.map((name, index) => ({ id: playersList.length + index + 1, name })),
-    ];
 
     setPlayersList((prev) => [...prev, ...newPlayers]);
     setPlayersToAdd('');
