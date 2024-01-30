@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import Team from './Team'
 
 export default function TeamsPicked({ playersPerTeam, teamsList, setTeamsList }) {
-  const { playersList } = useContext(PlayersContext)
+  const { selectedPlayersList } = useContext(PlayersContext)
   const [isPickedTeamsShowed, setIsPickedTeamsShowed] = useState(false);
 
   const randomPick = () => {
-    const shuffledPlayers = playersList.sort(() => Math.random() - 0.5);
+    const shuffledPlayers = selectedPlayersList.sort(() => Math.random() - 0.5);
 
     const shuffledTeams = shuffledPlayers.reduce((result, player, index) => {
       const teamIndex = Math.floor(index / playersPerTeam);

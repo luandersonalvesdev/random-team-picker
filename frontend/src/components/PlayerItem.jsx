@@ -7,6 +7,7 @@ export default function PlayerItem({player: {name, id}}) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(name);
   const { playersList, setPlayersList, isLogged } = useContext(PlayersContext);
+  const { setSelectedPlayersList } = useContext(PlayersContext);
 
   const handleEditName = (event) => {
     const { value } = event.target;
@@ -40,6 +41,16 @@ export default function PlayerItem({player: {name, id}}) {
     setPlayersList(newPlayers)
   }
 
+  const handleSelectPlayer = () => {
+    setSelectedPlayersList((prev) => {
+      const isPlayerOnList = prev.some((player) => player.id === id);
+      if(isPlayerOnList) {
+        return prev.filter((player) => player.id !== id)
+      }
+      return [...prev, { id, name }]
+    })
+  }
+
   return (
     <>
       {
@@ -52,9 +63,12 @@ export default function PlayerItem({player: {name, id}}) {
           )
           : (
             <li>
-              <p>{name}</p>
-              <button onClick={() => setIsEditing(true)}>Editar</button>
-              <button onClick={handleRemoveName}>Remover</button>
+              <label>
+                <input type="checkbox" onChange={handleSelectPlayer} value={name} />
+                <p>{name}</p>
+                <button onClick={() => setIsEditing(true)}>Editar</button>
+                <button onClick={handleRemoveName}>Remover</button>
+              </label>
             </li>
           )
       }

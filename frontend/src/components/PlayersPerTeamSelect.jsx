@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 export default function PlayersPerTeamSelect({ setPlayersPerTeam }) {
 
-  const { playersList } = useContext(PlayersContext);
+  const { selectedPlayersList } = useContext(PlayersContext);
 
   const handleChange = (event) => setPlayersPerTeam(Number(event.target.value));
 
@@ -13,7 +13,7 @@ export default function PlayersPerTeamSelect({ setPlayersPerTeam }) {
       <p>Selecione a quantidade de jogadores por time</p>
       <select onChange={handleChange}>
         {
-          playersList.map((_, ind) => {
+          selectedPlayersList.map((_, ind) => {
             return <option key={ind} value={ind + 1}>{ind + 1}</option>
           })
         }
