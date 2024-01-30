@@ -1,6 +1,7 @@
 import PlayersList from '../../components/PlayersList'
 import PlayerAdder from '../../components/PlayerAdder'
 import Logout from '../../components/Logout'
+import Teams from '../../components/Teams'
 
 export default function Dashboard() {
 
@@ -10,6 +11,7 @@ export default function Dashboard() {
       <h1>Dashboard</h1>
       <PlayerAdder />
       <PlayersList />
+      <Teams />
     </div>
   )
 }
