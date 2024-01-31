@@ -22,7 +22,9 @@ export default function PlayersList() {
       }
       <ul>
         {
-          playersList.map((player) => <PlayerItem key={player.id} player={player} />)
+          playersList
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((player) => <PlayerItem key={player.id} player={player} />)
         }
       </ul>
     </div>
