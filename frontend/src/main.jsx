@@ -1,3 +1,4 @@
+import './main.css'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
 import Login from './pages/Login/index.jsx'
