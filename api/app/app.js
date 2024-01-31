@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const { signupRoute, loginRoute, dashboardRoute } = require('./routes');
+const {
+  signupRoute, loginRoute, dashboardRoute, userRoute,
+} = require('./routes');
 
 const app = express();
 
@@ -19,5 +21,6 @@ app.get('/', (_req, res) => {
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
 app.use('/dashboard', dashboardRoute);
+app.use('/user', userRoute);
 
 module.exports = app;
