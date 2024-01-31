@@ -51,14 +51,18 @@ export default function PlayerAdder() {
   }
 
   return (
-    <form>
-      <textarea
-        ref={textAreaRef}
-        value={playersToAdd}
-        onChange={handleChange}
-        rows={1}
-      />
-      <button onClick={handleAddPlayers}>Adicionar</button>
-    </form>
+    <>
+      <h1>Adicione jogadores</h1>
+      <p>Digite os nomes, separando-os por vírgulas ou pulando para uma nova linha.</p>
+      <form>
+        <textarea
+          ref={textAreaRef}
+          value={playersToAdd}
+          onChange={handleChange}
+          rows={1}
+        />
+        <button onClick={handleAddPlayers}>Adicionar</button>
+      </form>
+    </>
   )
 }
