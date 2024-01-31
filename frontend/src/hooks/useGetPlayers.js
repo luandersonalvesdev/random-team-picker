@@ -10,7 +10,8 @@ const useGetPlayers = () => {
     const storedToken = getFromLs('rtp-token');
 
     if(!storedToken) {
-      setPlayersList([])
+      setPlayersList([]);
+      setIsLogged(false);
       return;
     }
 
