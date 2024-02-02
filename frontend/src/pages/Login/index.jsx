@@ -1,15 +1,14 @@
 import FormLogin from '../../components/FormLogin'
-import { Link } from 'react-router-dom'
 import JoinAsGuest from '../../components/JoinAsGuest'
 
 export default function Login() {
 
   return (
-    <div>
-      <h1>Entrar</h1>
-      <FormLogin />
-      <p>Se ainda não tem uma conta <Link to='/signup'>crie aqui</Link>.</p>
-      <JoinAsGuest />
-    </div>
+    <main className='flex flex-col justify-center w-screen h-screen items-center bg-gray-100'>
+      <div className='flex flex-col justify-center items-center bg-white rounded-lg pt-8 shadow-md'>
+        <FormLogin />
+        <JoinAsGuest />
+      </div>
+    </main>
   )
 }
