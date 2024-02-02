@@ -4,7 +4,7 @@ import PropsTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { setToLs } from '../utils/localStorage';
 
-export default function FormLogin() {
+export default function LoginForm() {
   const [loginFailedMsg, setLoginFailedMsg] = useState('');
   const [formValues, setFormValues] = useState({
     username: '',
@@ -81,6 +81,6 @@ export default function FormLogin() {
   );
 }
 
-FormLogin.propTypes = {
+LoginForm.propTypes = {
   setLoginFailedMsg: PropsTypes.func
 }

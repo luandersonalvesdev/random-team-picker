@@ -8,7 +8,7 @@ import {
   validateCaptcha
 } from 'react-simple-captcha';
 
-export default function FormSignup() {
+export default function SignupForm() {
   const [captchaField, setCaptchaField] = useState('');
   const [loginFailedMsg, setLoginFailedMsg] = useState('');
   const [formValues, setFormValues] = useState({
