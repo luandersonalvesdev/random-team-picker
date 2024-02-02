@@ -12,7 +12,9 @@ export default function Loggout() {
 
   return (
     <div>
-      <button onClick={handleLoggout}>Sair</button>
+      <button
+        className='bg-red-600 text-white rounded py-1 px-3 hover:brightness-105 duration-300 ml-7'
+        onClick={handleLoggout}>Sair</button>
     </div>
   )
 }

@@ -12,14 +12,18 @@ export default function Header() {
   const { isLogged } = useContext(PlayersContext);
 
   return (
-    <header>
+    <header className='bg-gray-100 flex w-full justify-between items-center px-8 py-4 rounded opacity-95'>
       {
         isLogged
-          ? <p>Você está logado como { userData.username }</p>
+          ? <p>
+              Você está logado como
+                <span className='text-secondary-app'>
+                  { ` ${userData.username}` }
+                </span>
+            .</p>
           : (
             <p>
-              Voce está usando como convidado logo seus jogadores não serão salvos.
-              Para salvar seus jogadores <Link to='/login'>entre</Link> ou <Link to='/signup'>crie uma conta</Link>.
+              Voce está como convidado. <Link className='text-main-app-200' to='/login'>Entre</Link> ou <Link className='text-main-app-200' to='/signup'>crie uma conta</Link>.
             </p>
           )
       }

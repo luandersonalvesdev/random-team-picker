@@ -51,18 +51,26 @@ export default function PlayerAdder() {
   }
 
   return (
-    <>
-      <h1>Adicione jogadores</h1>
-      <p>Digite os nomes, separando-os por vírgulas ou pulando para uma nova linha.</p>
-      <form>
+    <div className='pt-10 opacity-95'>
+      <h1 className='text-4xl font-bold mb-2'>Adicione jogadores</h1>
+      <p className='text-base text-secondary-app'>Digite os nomes, separando-os por vírgulas ou pulando para uma nova linha.</p>
+      <form className='flex items-center mt-2 mb-5'>
         <textarea
+        className='w-full border rounded p-3 resize-none overflow-y-hidden max-w-96 italic'
           ref={textAreaRef}
           value={playersToAdd}
           onChange={handleChange}
           rows={1}
+          placeholder='Jogador 1, Jogador 2...'
         />
-        <button onClick={handleAddPlayers}>Adicionar</button>
+        <button
+            className='bg-secondary-app text-white rounded py-2 px-2 hover:brightness-110 duration-300 ml-2 disabled:opacity-40 disabled:cursor-not-allowed'
+            onClick={handleAddPlayers}
+            disabled={!playersToAdd}
+          >
+            Adicionar
+        </button>
       </form>
-    </>
+    </div>
   )
 }
