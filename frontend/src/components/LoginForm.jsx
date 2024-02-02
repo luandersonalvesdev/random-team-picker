@@ -74,7 +74,7 @@ export default function LoginForm() {
               ? <LoadingSpinner />
               : loginFailedMsg
                   && (
-                  <p className='mb-4 w-full text-red-500 text-opacity-80 flex justify-center items-center text-center bg-red-100 rounded-md py-1.5 p-2'>{loginFailedMsg}</p>
+                  <p className='mb-4 w-full text-red-500 text-opacity-80 flex justify-center items-center text-center border bg-red-50 border-red-100 rounded-md py-1.5 p-2'>{loginFailedMsg}</p>
                   )
           }
         </div>

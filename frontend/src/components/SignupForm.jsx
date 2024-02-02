@@ -39,11 +39,12 @@ export default function SignupForm() {
 
   const handleSignup = (event) => {
     event.preventDefault();
-    setIsLoading(true);
 
     if(!validateCaptcha(captchaField, true)) {
-      return setLoginFailedMsg('Invalid captcha')
+      return setLoginFailedMsg('Invalid captcha');
     }
+
+    setIsLoading(true);
 
     instanceAxios.post('/signup', { ...formValues })
       .then(response => {
@@ -98,11 +99,13 @@ export default function SignupForm() {
             />
           </label>
         </div>
-        <div className='flex flex-col justify-center items-center mt-2 mb-4'>
+        <div className='flex flex-col justify-center items-center mt-2 mb-4 border p-3 rounded'>
           <LoadCanvasTemplate />
           <input
-            className='block w-full rounded-md border-0 py-1.5 pl-3 pr-2 text-gray-700 ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-main-app outline-none'
-            type="text" onChange={handleCaptchaChange}
+            className='block w-1/2 rounded-md border-0 text-2xl py-1.5 text-center ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-main-app outline-none'
+            type="text"
+            onChange={handleCaptchaChange}
+            maxLength={4}
           />
         </div>
         <div>
@@ -111,7 +114,7 @@ export default function SignupForm() {
               ? <LoadingSpinner />
               : loginFailedMsg
                   && (
-                    <p className='mb-4 w-full text-red-500 text-opacity-80 flex justify-center items-center text-center bg-red-100 rounded-md py-1.5 p-2'>{loginFailedMsg}</p>
+                    <p className='mb-4 w-full text-red-500 text-opacity-80 flex justify-center items-center text-center border bg-red-50 border-red-100 rounded-md py-1.5 p-2'>{loginFailedMsg}</p>
                   )
           }
         </div>
