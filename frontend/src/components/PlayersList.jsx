@@ -11,7 +11,8 @@ export default function PlayersList() {
 
   return (
     <div>
-      <ul>
+      <p className='text-2xl font-bold mt-10'>Jogadores adicionados</p>
+      <ul className='flex flex-row flex-wrap my-3'>
         {
           playersList
             .sort((a, b) => a.name.localeCompare(b.name))

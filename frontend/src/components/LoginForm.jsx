@@ -57,7 +57,7 @@ export default function LoginForm() {
         </div>
         <div>
           <label className='block text-sm font-medium leading-6 text-gray-500'>
-          Senha
+            Senha
             <input
               className='block w-full rounded-md border-0 py-1.5 pl-3 pr-2 text-gray-700 ring-1 ring-inset ring-gray-400 mb-4 focus:ring-2 focus:ring-inset focus:ring-main-app outline-none'
               type="password"

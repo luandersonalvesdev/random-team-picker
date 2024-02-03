@@ -56,7 +56,7 @@ export default function PlayerAdder() {
       <p className='text-base text-secondary-app'>Digite os nomes, separando-os por vírgulas ou pulando para uma nova linha.</p>
       <form className='flex items-center mt-2 mb-5'>
         <textarea
-        className='w-full border rounded p-3 resize-none overflow-y-hidden max-w-96 italic'
+        className='w-full border rounded p-3 resize-none overflow-y-hidden max-w-96 placeholder:italic'
           ref={textAreaRef}
           value={playersToAdd}
           onChange={handleChange}

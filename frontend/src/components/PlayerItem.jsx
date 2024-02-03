@@ -2,6 +2,8 @@ import PropType from 'prop-types'
 import { useContext, useState } from 'react';
 import { PlayersContext } from '../contexts/PlayersContext'
 import instanceAxios from '../utils/axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
 export default function PlayerItem({player: {name, id}}) {
   const [isEditing, setIsEditing] = useState(false);
@@ -52,27 +54,56 @@ export default function PlayerItem({player: {name, id}}) {
   }
 
   return (
-    <>
+    <div>
       {
         isEditing
           ? (
-            <li>
-              <input type="text" value={editedName} onChange={handleEditName} maxLength={25}/>
-              <button disabled={!editedName.trim()} onClick={handleUpdateName}>Salvar</button>
+            <li className='border p-2 m-1 rounded'>
+              <input
+                className='w-36 rounded-md py-1.5 pl-3 pr-2 text-gray-700 ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-main-app outline-none'
+                type="text"
+                value={editedName}
+                onChange={handleEditName}
+                maxLength={50}
+              />
+              <button
+                className='py-1 px-2 rounded text-white bg-secondary-app border ml-2 hover:brightness-110 duration-300 disabled:opacity-40 disabled:cursor-not-allowed'
+                disabled={!editedName.trim()}
+                onClick={handleUpdateName}
+              >
+                Salvar
+              </button>
             </li>
           )
           : (
-            <li>
-              <label>
-                <input type="checkbox" onChange={handleSelectPlayer} value={name} />
-                <p>{name}</p>
-                <button onClick={() => setIsEditing(true)}>Editar</button>
-                <button onClick={handleRemoveName}>Remover</button>
+            <li className='border p-2 m-1 rounded'>
+              <label className='flex items-center '>
+                <input
+                  className='h-4 w-4 border rounded bg-white checked:bg-main-app checked:border-main-app-200'
+                  type="checkbox"
+                  onChange={handleSelectPlayer}
+                  value={name}
+                />
+                <p className='ml-2 mr-8 text-xl'>{name}</p>
+                <div className='border-l pl-2 h-full'>
+                  <button
+                    className='py-1 px-2 rounded text-green-900 bg-green-200 border border-green-600 mr-1'
+                    onClick={() => setIsEditing(true)}
+                  >
+                    <FontAwesomeIcon icon={faPen} />
+                  </button>
+                  <button
+                    className='py-1 px-2 rounded text-red-600 bg-red-100 border border-red-300'
+                    onClick={handleRemoveName}
+                  >
+                      <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
               </label>
             </li>
           )
       }
-    </>
+    </div>
   )
 }
 
