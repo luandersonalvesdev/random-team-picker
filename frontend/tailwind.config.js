@@ -13,6 +13,9 @@ export default {
         'main-app-dark': '#053126',
         'main-app-light': '#1DFFC6',
         'secondary-app': '#2191FB',
+      },
+      spacing: {
+        '2%': '2%'
       }
     },
   },

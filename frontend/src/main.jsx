@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard/index.jsx'
 import NotFound from './pages/NotFound/index.jsx'
 import PlayersContextProvider from './contexts/PlayersContext.jsx'
 import UserContextProvider from './contexts/UserContext.jsx'
-import RedirectDashboardRoute from './pages/RedirectRoutes/RedirectDashboardRoute.jsx'
+import RedirectDashboardRoute from './routes/RedirectRoutes/RedirectDashboardRoute.jsx'
 
 const router = createBrowserRouter([
   {
