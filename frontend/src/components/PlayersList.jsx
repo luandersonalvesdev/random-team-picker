@@ -5,7 +5,7 @@ import { PlayersContext } from '../contexts/PlayersContext'
 import useGetPlayers from '../hooks/useGetPlayers'
 
 export default function PlayersList() {
-  const { playersList } = useContext(PlayersContext)
+  const { playersList, selectedPlayersList } = useContext(PlayersContext)
 
   useGetPlayers();
 
@@ -19,6 +19,14 @@ export default function PlayersList() {
             .map((player) => <PlayerItem key={player.id} player={player} />)
         }
       </ul>
+      <span className='italic text-base text-gray-500'>
+        Quantidade de jogadores selecionados:
+      </span>
+      <span
+        className='text-secondary-app text-lg font-bold ml-1'
+      >
+        {selectedPlayersList.length}
+      </span>
     </div>
   )
 }
