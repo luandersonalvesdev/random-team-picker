@@ -10,31 +10,31 @@ export default function PlayersList() {
   useGetPlayers();
 
   return (
-    <div>
+    <>
       {
-        playersList.length != 0
+        playersList.length > 0
           && (
-            <>
-              <p className='text-2xl font-bold mt-10'>Jogadores adicionados</p>
-              <ul className='flex flex-row flex-wrap my-3'>
-                {
-                  playersList
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((player) => <PlayerItem key={player.id} player={player} />)
-                }
-              </ul>
-              <span className='italic text-base text-gray-500'>
-                Quantidade de jogadores selecionados:
-              </span>
-              <span
-                className='text-secondary-app text-lg font-bold ml-1'
-              >
-                {selectedPlayersList.length}
-              </span>
-            </>
-            )
+            <div className='border rounded p-4'>
+                <p className='text-2xl font-bold mt-2'>Jogadores adicionados</p>
+                <ul className='flex flex-row flex-wrap my-3'>
+                  {
+                    playersList
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map((player) => <PlayerItem key={player.id} player={player} />)
+                  }
+                </ul>
+                <span className='italic text-base text-gray-500'>
+                  Quantidade de jogadores selecionados:
+                </span>
+                <span
+                  className='text-secondary-app text-lg font-bold ml-1'
+                >
+                  {selectedPlayersList.length}
+                </span>
+            </div>
+          )
       }
-    </div>
+    </>
   )
 }
 

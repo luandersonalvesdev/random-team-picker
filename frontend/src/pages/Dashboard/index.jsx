@@ -6,8 +6,8 @@ import Header from '../../components/Header'
 export default function Dashboard() {
 
   return (
-    <main className='flex flex-col justify-center w-screen p-[2%]'>
-      <div className='flex flex-col justify-center rounded bg-white p-12 min-h-screen'>
+    <main className='flex flex-col justify-start w-screen p-[2%]'>
+      <div className='flex flex-col justify-start rounded bg-white p-12'>
         <Header />
         <PlayerAdder />
         <PlayersList />

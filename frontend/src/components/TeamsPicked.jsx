@@ -27,13 +27,19 @@ export default function TeamsPicked({ playersPerTeam, teamsList, setTeamsList })
 
   return (
     <div>
-      <button
-        className='bg-secondary-app text-white rounded py-2 px-2 hover:brightness-110 duration-300 disabled:opacity-40 disabled:cursor-not-allowed mt-2'
-        onClick={randomPick}
-        disabled={!selectedPlayersList.length}
-      >
-        Sortear times
-      </button>
+      {
+        selectedPlayersList.length > 0
+          && (
+            <>
+              <button
+                className='bg-secondary-app text-white rounded py-2 px-2 hover:brightness-110 duration-300 disabled:opacity-40 disabled:cursor-not-allowed mt-2'
+                onClick={randomPick}
+              >
+                Sortear times
+              </button>
+            </>
+          )
+      }
       {
         isPickedTeamsShowed
           && (

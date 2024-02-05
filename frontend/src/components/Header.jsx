@@ -15,12 +15,12 @@ export default function Header() {
     <header className='bg-gray-100 flex w-full justify-between items-center px-8 py-4 rounded opacity-95'>
       {
         isLogged
-          ? <p>
-              Você está logado como
-                <span className='text-secondary-app'>
+          ? <span>
+              Você está usando como
+                <span className='text-secondary-app font-bold'>
                   { ` ${userData.username}` }
                 </span>
-            .</p>
+            .</span>
           : (
             <p>
               Voce está como convidado. <Link className='text-main-app-200' to='/login'>Entre</Link> ou <Link className='text-main-app-200' to='/signup'>crie uma conta</Link>.
