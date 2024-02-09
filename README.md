@@ -1,9 +1,6 @@
-Escolha sua lingua.
-<br>
-Choose your language.
-<br>
-[🇧🇷](#🇧🇷)
-[🇺🇸](#🇺🇸)
+### Escolha sua lingua / Choose your language.
+- [🇧🇷](#🇧🇷)
+- [🇺🇸](#🇺🇸)
 
 # 🇧🇷
 # Random Team Picker
@@ -16,9 +13,9 @@ O Random Team Picker permite que os usuários se cadastrem ou usem a aplicação
 ### Estrutura do Repositório
 O repositório está organizado em dois principais diretórios: `api` e `frontend`. Cada diretório possui seu próprio `README.md` com informações específicas sobre o serviço.
 
-- API: Contém detalhes sobre a API, incluindo instruções para configurar, executar e testar.
+- `api`: Contém detalhes sobre a API, incluindo instruções para configurar, executar e testar.
 
-- Frontend: Oferece informações sobre o Frontend da aplicação, incluindo instruções de configuração, execução e desenvolvimento.
+- `frontend`: Oferece informações sobre o Frontend da aplicação, incluindo instruções de configuração, execução e desenvolvimento.
 
 ### Configuração Rápida
 Siga estes passos para configurar e executar a aplicação localmente:
@@ -54,9 +51,9 @@ Random Team Picker allows users to register or use the application as a guest. A
 ### Repository Structure
 The repository is organized into two main directories: `api` and `frontend`. Each directory has its own `README.md` with specific information about the service.
 
-- API: Contains details about the API, including instructions for configuring, running, and testing.
+- `api`: Contains details about the API, including instructions for configuring, running, and testing.
 
-- Frontend: Provides information about the application's Frontend, including configuration, execution and development instructions.
+- `frontend`: Provides information about the application's Frontend, including configuration, execution and development instructions.
 
 ### Quick Setup
 Follow these steps to configure and run the application locally:
